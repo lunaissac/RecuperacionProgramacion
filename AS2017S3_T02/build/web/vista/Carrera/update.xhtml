@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+
+        <p:dialog id="Updatealu"
+                  widgetVar="UpdateAlumno"
+                  appendTo="@(body)"
+                  header="Modificar Carrera"
+                  closeOnEscape="true"
+                  resizable="false"
+                  responsive=".0"
+                  modal="true"  showEffect="explode" >
+            <h:form>
+                <h:panelGrid columns="2">     
+                    
+                    
+                  
+                  
+                         <p:outputLabel value="Abreviatura de Carrera" />
+                          <p:inputText  value="#{carreraController.carrera.ABRCAR}" />
+                     <p:outputLabel value="Nombre de Carrera" />
+                     <p:inputText  value="#{carreraController.carrera.NAME_CAR}"/>
+                     <p:outputLabel value="Abreviatura del Módulo" />
+                     <p:inputText  value="#{carreraController.carrera.ABRMOD}"/>
+                     <p:outputLabel value="Módulo de la Carrera" />
+                     <p:inputText  value="#{carreraController.carrera.MOD_CAR}"/>
+                     <p:outputLabel value="Año de la Carrera" />
+                     <p:inputText  value="#{carreraController.carrera.YEAR_CAR}"/>
+                       <p:outputLabel value="Estado de la Carrera:" />
+                        <p:selectOneMenu value="#{carreraController.carrera.EST_CAR}" >
+                            <f:selectItem itemLabel="A" itemValue="A"/>
+                             <f:selectItem itemLabel="I" itemValue="I"/>
+                        </p:selectOneMenu> 
+                     <p:outputLabel value="Estado del Cultivo(Uso)" />
+                     <p:inputText  value="#{carreraController.carrera.ESTCUL}"/>
+                     <p:outputLabel value="Cantidad de Hora requerida el Módulo" />
+                     <p:inputText  value="#{carreraController.carrera.HORMOD}"/>
+                          
+                     
+                    <p:commandButton value="Aceptar" actionListener="#{carreraController.update()}" update=":form:data" oncomplete="handleSubmit(args,'UpdateAlumno');"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+
+</html>

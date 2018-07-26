@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+
+        <p:dialog id="Updatealu"
+                  widgetVar="UpdateAlumno"
+                  appendTo="@(body)"
+                  header="Modificar Centro de Interes"
+                  closeOnEscape="true"
+                  resizable="false"
+                  responsive=".0"
+                  modal="true"  showEffect="explode" >
+            <h:form>
+                <h:panelGrid columns="2">          
+                  
+                                  <p:outputLabel value="Descripción:" />
+                        <p:selectOneMenu value="#{ciController.ci.desCi}" >
+                            <f:selectItem itemLabel="ORGANIZACION DE LA EMPRESA" itemValue="ORGANIZACION DE LA EMPRESA"/>
+                             <f:selectItem itemLabel="INVENTARIO DEL PARQUE INFORMATICO" itemValue="INVENTARIO DEL PARQUE INFORMATICO"/>
+                               <f:selectItem itemLabel="DIAGNOSTICO DEL PARQUE INFORMATICO" itemValue="DIAGNOSTICO DEL PARQUE INFORMATICO"/>
+                             <f:selectItem itemLabel="INTELIGENCIA DE NEGOCIOS" itemValue="INTELIGENCIA DE NEGOCIOS"/>
+                               <f:selectItem itemLabel="SPRINT1: MANTENIMIENTO DE MAESTROS" itemValue="SPRINT 1"/>
+                             <f:selectItem itemLabel="SPRINT 2" itemValue="SPRINT 2"/>
+                             <f:selectItem itemLabel="SPRINT 3: IMPLEMENTACION DE TRANSACCIONES" itemValue="SPRINT 3"/>
+                             <f:selectItem itemLabel="SPRINT 4: IMPLEMENTACION DE REPORTES Y DESARROLLO DE PROCESOS TRANSACCIONALES" itemValue="SPRINT 4"/>
+                             <f:selectItem itemLabel="SISTEMATIZACIÓN DE LA INFORMACIÓN DEL PARQUE INFORMÁTICO" itemValue="SISTEMATIZACIÓN DE LA INFORMACIÓN DEL PARQUE INFORMÁTICO"/>
+                             <f:selectItem itemLabel="SPRINT5: CONTROL DE ACCESO Y SEGURIDAD A LOS SISTEMAS" itemValue="SPRINT 5"/>
+                            
+                        </p:selectOneMenu> 
+                         <p:outputLabel value="Estado:" />
+                        <p:selectOneMenu value="#{ciController.ci.estCi}" >
+                            <f:selectItem itemLabel="A" itemValue="A"/>
+                             <f:selectItem itemLabel="I" itemValue="I"/>
+                        </p:selectOneMenu> 
+   
+                         <p:outputLabel value="Asignacion:" />
+                        <p:selectOneMenu value="#{ciController.ci.asignacion_idAsignacion}" >
+                            <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
+                            <f:selectItems value="#{asignacionController.listasignacion}" var="per" itemLabel="#{per.tempAlt}" itemValue="#{per.idAsignacion}"/>
+                        </p:selectOneMenu> 
+           
+                        <p:outputLabel value="Carrera              :" />
+                        <p:selectOneMenu value="#{ciController.ci.CARRERA_COD_CAR}" >
+                            <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
+                            <f:selectItems value="#{carreraController.listcarrera}" var="per" itemLabel="#{per.NAME_CAR}" itemValue="#{per.COD_CAR}"/>
+                        </p:selectOneMenu> 
+                        
+                          <p:outputLabel value="Alumno              :" />
+                          <p:selectOneMenu value="#{ciController.ci.ALUMNO_COD_ALUM}" >
+                            <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
+                            <f:selectItems value="#{alumnoController.lstalumno}" var="per" itemLabel="#{per.APE_ALUM} #{per.NOM_ALUM}" itemValue="#{per.COD_ALUM}"/>
+                        </p:selectOneMenu> 
+                          
+                            <p:outputLabel value="Monitor              :" />
+                            <p:selectOneMenu value="#{ciController.ci.MONITOR_CODMON}" >
+                            <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
+                            <f:selectItems value="#{monitorController.listMonitors}" var="per" itemLabel="#{per.APEMON} #{per.NOMMON}" itemValue="#{per.CODMON}"/>
+                        </p:selectOneMenu> 
+                    <p:commandButton value="Aceptar" actionListener="#{ciController.update()}" update=":form:data" oncomplete="handleSubmit(args,'UpdateAlumno');"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+
+</html>

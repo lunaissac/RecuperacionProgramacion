@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Guia</title>
+        <script src="../../resources/js/jsfCrud.js" type="text/javascript"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Template/plantilla.xhtml">
+
+            <ui:define name="content">
+                 <center><h1>GUIA</h1></center>
+                <h:form id="form">
+                   <center><h:commandLink>
+                        <p:graphicImage url = "../../resources/img/csv.png"/>
+                        <p:dataExporter type = "csv" target = "data" fileName = "reporteCSV" />
+                       </h:commandLink>
+                    <h:commandLink>
+                      
+                        <p:graphicImage url = "../../resources/img/pdf.png"/>
+                        <p:dataExporter type = "pdf" target = "data" fileName = "reportePDF" />
+                    </h:commandLink>
+                    <h:commandLink>
+                        <p:graphicImage url = "../../resources/img/xls.png"/>
+                        <p:dataExporter type = "xls" target = "data" fileName = "reporteXLS" />
+                    </h:commandLink>
+                     <h:commandLink>
+                        <p:graphicImage url = "../../resources/img/XML.png"/>
+                        <p:dataExporter type = "xml" target = "data" fileName = "reporteXML" />
+                    </h:commandLink></center>
+                    <p:dataTable id="data" value="#{guiaController.lstguia}" var="guia" paginator="true" rows="16"  selectionMode="single" selection="#{guiaController.guia}" rowKey="#{guia.idGuia}">
+                        <p:column headerText="CODIGO">
+                            <p:outputLabel value="#{guia.idGuia}"/>
+                        </p:column>
+                        <p:column headerText="PROMEDIO EVAL.ACTITUDINAL">
+                            <p:outputLabel value="#{guia.promEvalActit}"/>
+                        </p:column>
+                        <p:column headerText="PROMEDIO EVAL.CI">
+                            <p:outputLabel value="#{guia.promEvalCi}"/>
+                        </p:column>
+                        <p:column headerText="RESULTADO FINAL">
+                            <p:outputLabel value="#{guia.resultFinGuia}"/>
+                        </p:column>
+                        <p:column headerText="FECHA">
+                            <p:outputLabel value="#{guia.fecGuia}"/>
+                        </p:column>
+                        <p:column headerText="CONFORMIDAD DEL TUTOR">
+                            <p:outputLabel value="#{guia.confTutor}"/>
+                        </p:column>
+                        <p:column headerText="CONFORMIDAD DEL ALUMNO">
+                            <p:outputLabel value="#{guia.confAlum}"/>
+                        </p:column>
+                        <p:column headerText="CI">
+                            <p:outputLabel value="#{guia.CI_idCi}"/>
+                        </p:column>
+                        <p:column headerText="ACT.CI">
+                            <p:outputLabel value="#{guia.detActCentro_idDetActCent}"/>
+                        </p:column>
+                         <f:facet name="header">
+                            <p:commandButton id="toggler" type="button" value="Columnas" icon="ui-icon-calculator" />
+                            <p:columnToggler datasource="data" trigger="toggler" />
+                        </f:facet>
+                        <f:facet name="footer">
+                            <p:commandButton value="Agregar" actionListener="#{guiaController.preparGuia()}" oncomplete="PF('NewGuia').show();" update="NewGuia"/>
+                            <p:commandButton value="refresh" actionListener="#{guiaController.list()}" update="form"/>
+                        </f:facet>
+                    </p:dataTable>
+                    <p:contextMenu for="data">
+                        <p:menuitem value="editar"  icon="ui-icon-search" oncomplete="PF('UpdateGuia').show()" update="Updateguia" />
+
+                    </p:contextMenu>
+                </h:form>
+                <ui:include src="add.xhtml"/>
+                <ui:include src="update.xhtml"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

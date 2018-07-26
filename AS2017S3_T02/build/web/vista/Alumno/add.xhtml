@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+
+        <p:dialog id="NewAlum"
+                  widgetVar="NewAlumno"
+                  appendTo="@(body)"
+                  header="Agregar Nuevo Alumno"
+                  closeOnEscape="true"
+                  resizable="false"
+                  responsive=".0"
+                  modal="true"  showEffect="explode" >
+            <h:form>
+                <h:panelGrid columns="2">          
+                    <p:outputLabel value="DNI"/>
+                    <p:inputText value="#{alumnoController.alumno.COD_ALUM}" maxlength="8">
+                        <p:keyFilter regEx='/[\d\-]/'/>
+                    </p:inputText>
+                    <p:outputLabel value="NOMBRE"/>
+                    <p:inputText value="#{alumnoController.alumno.NOM_ALUM}" placeholder="NOMBRE"/>
+                    <p:outputLabel value="APELLIDO"/>
+                    <p:inputText value="#{alumnoController.alumno.APE_ALUM}" placeholder="APELLIDO"/>
+                    <p:outputLabel value="TIPO DE INGRESO"/>
+                    <p:inputText value="#{alumnoController.alumno.INGR_ALUM}" placeholder="TPO DE INGRESO"/>
+                    <p:outputLabel value="FECHA DE NACIMIENTO"/>
+                    <p:inputMask value="#{alumnoController.alumno.FCH_NAC_ALUM}" placeholder="FECHA DE NACIMIENTO" mask="9999/99/99"/>
+                    <p:outputLabel value="EMAIL"/>
+                    <p:inputText value="#{alumnoController.alumno.CORREO_ALUM}" placeholder="EMAIL"/>
+                    <p:outputLabel value="TELEFONO 1"/>
+                    <p:inputText value="#{alumnoController.alumno.TELF1_ALUM}" placeholder="TELEFONO1" maxlength="9" > <p:keyFilter regEx='/[\d\-]/'/></p:inputText>
+                    <p:outputLabel value="TELEFONO 2"/>
+                    <p:inputText value="#{alumnoController.alumno.TELF2_ALUM}" placeholder="TELEFONO2" maxlength="9"> <p:keyFilter regEx='/[\d\-]/'/></p:inputText>
+                    <p:outputLabel value="DIRECCION DE ORIGEN"/>
+                    <p:inputText value="#{alumnoController.alumno.DIR_ORIG}" placeholder="DIRECCION ORIGEN"/>
+                    <p:outputLabel value="REFERENCIA DE ORIGEN"/>
+                    <p:inputText value="#{alumnoController.alumno.REF_ORIG}" placeholder="REFERENCIA ORIGEN"/>
+                    <p:outputLabel value="DIRECCION ACTUAL"/>
+                    <p:inputText value="#{alumnoController.alumno.DIR_ALUM}" placeholder="DIRECCION ACTUAL"/>
+                    <p:outputLabel value="REF. DIR. ACTUAL"/>
+                    <p:inputText value="#{alumnoController.alumno.REF_ALUM}" placeholder="REF. DIR. ACTUAL"/>
+                    <p:outputLabel value="PASSWORD"/>
+                    <p:inputText value="#{alumnoController.alumno.PWD_ALUM}" placeholder="PASSWORD"/>
+                    <p:outputLabel value="ESTADO"/>
+                    <p:inputText value="#{alumnoController.alumno.ESTALUM}" placeholder="ESTADO"/>
+                    <p:outputLabel value="UBIGEO"/>
+                    <p:inputText value="#{alumnoController.alumno.ubigeo_idUbg}" placeholder="ubigeo"/>
+                    <p:outputLabel value="CARRERA"/>
+                    <p:selectOneMenu value="#{alumnoController.alumno.CARRERA_COD_CAR}"  >
+                        <f:selectItem itemLabel="SELECCIONE" itemDisabled="true" />
+                        <f:selectItem itemLabel="SISTEMAS" itemValue="1"/>
+                        <f:selectItem itemLabel="AGRARIA" itemValue="2"/>
+                    </p:selectOneMenu>
+                    <p:commandButton value="INSERTAR" actionListener="#{alumnoController.add()}" update=":form:data" oncomplete="handleSubmit(args,'NewAlumno');"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+
+</html>
+

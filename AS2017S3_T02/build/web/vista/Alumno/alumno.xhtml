@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Alumno</title>
+        <script src="../../resources/js/jsfCrud.js" type="text/javascript"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Template/plantilla.xhtml">
+
+            <ui:define name="content">
+                <center><h1>ALUMNO</h1></center>
+                <h:form id="form">
+                    <center><h:commandLink>
+                            <p:graphicImage url = "../../resources/img/csv.png"/>
+                            <p:dataExporter type = "csv" target = "data" fileName = "reporteCSV" />
+                        </h:commandLink>
+                        <h:commandLink>
+
+                            <p:graphicImage url = "../../resources/img/pdf.png"/>
+                            <p:dataExporter type = "pdf" target = "data" fileName = "reportePDF" />
+                        </h:commandLink>
+                        <h:commandLink>
+                            <p:graphicImage url = "../../resources/img/xls.png"/>
+                            <p:dataExporter type = "xls" target = "data" fileName = "reporteXLS" />
+                        </h:commandLink>
+                        <h:commandLink>
+                            <p:graphicImage url = "../../resources/img/XML.png"/>
+                            <p:dataExporter type = "xml" target = "data" fileName = "reporteXML" />
+                        </h:commandLink></center>
+
+
+                    <p:dataTable id="data" value="#{alumnoController.lstalumno}" var="alum" paginator="true" rows="16"  selectionMode="single" selection="#{alumnoController.alumno}" rowKey="#{alum.COD_ALUM}">
+                        <p:column headerText="Nombre">
+                            <p:outputLabel id="fade" ><img  src="../../resources/img/student_3540.ico" alt="User Image" /></p:outputLabel>
+
+                            <p:outputLabel  value="#{alum.NOM_ALUM}"/>
+                            <p:tooltip id="toolTipFade" for="fade" position="bottom" showEffect="clip" hideEffect="explode">
+                                <h:outputText value="DNI:  #{alum.COD_ALUM}"/>
+                                <br />
+                                <h:outputText value="Apellido:  #{alum.APE_ALUM}"/>
+                                <br />
+                                <h:outputText value="Fecha de Nacimiento:  #{alum.FCH_NAC_ALUM}"/>
+                                <br />
+                                <h:outputText value="Email:  #{alum.CORREO_ALUM}"/>
+                                <br />
+                                <h:outputText value="Número de Celular 2:  #{alum.TELF2_ALUM}"/>
+                                <br />
+                                <h:outputText value="Dirección de origen:  #{alum.DIR_ORIG}"/>
+                                <br />
+                                <h:outputText value="Referencia de origen  #{alum.REF_ORIG}"/>
+
+                            </p:tooltip>    
+                        </p:column>
+
+
+
+                        <p:column headerText="TIPO DE INGRESO">
+                            <p:outputLabel value="#{alum.INGR_ALUM}" />
+                        </p:column>
+                        <p:column headerText="TELEFONO 1">
+                            <p:outputLabel value="#{alum.TELF1_ALUM}" />
+                        </p:column>
+
+                        <p:column headerText="DIRECCION ACTUAL">
+                            <p:outputLabel value="#{alum.DIR_ALUM}" />
+                        </p:column>
+                        <p:column headerText="REF. DIR. ACTUAL">
+                            <p:outputLabel value="#{alum.REF_ALUM}" />
+                        </p:column>
+                        <p:column headerText="PASSWORD">
+                            <p:outputLabel value="#{alum.PWD_ALUM}" />
+                        </p:column>
+                        <p:column headerText="ESTADO">
+                            <p:outputLabel value="#{alum.ESTALUM}" />
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton value="Agregar" actionListener="#{alumnoController.preparAlumno()}" oncomplete="PF('NewAlumno').show();" update="NewAlum"/>
+                            <p:commandButton value="refresh" actionListener="#{alumnoController.list()}" update="form"/>
+                        </f:facet>
+
+                        <f:facet name="header">
+                            <p:commandButton value="Alumnos Activos" actionListener="#{alumnoController.list()}" update="form"/>
+                            <p:commandButton value="Alumnos Inactivos" actionListener="#{alumnoController.list2()}" update="form"/>
+                            <p:commandButton id="toggler" type="button" value="Columnas" icon="ui-icon-calculator" />
+                            <p:columnToggler datasource="data" trigger="toggler" />
+                        </f:facet>
+
+
+                    </p:dataTable>
+                    <p:contextMenu for="data">
+                        <p:menuitem value="editar"  icon="ui-icon-search" oncomplete="PF('UpdateAlumno').show()" update="Updatealum" />
+                        <p:menuitem value="Borrar"  icon="ui-icon-clear" update="data" actionListener="#{alumnoController.delete()}"/>
+                        <p:menuitem value="Activar"  icon="ui-icon-clear" update="data" actionListener="#{alumnoController.activar()}"/>
+                    </p:contextMenu>
+                </h:form>
+                <ui:include src="add.xhtml"/>
+                <ui:include src="update.xhtml"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
