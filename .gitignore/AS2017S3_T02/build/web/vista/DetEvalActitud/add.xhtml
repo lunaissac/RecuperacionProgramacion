@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui">
+     <ui:composition>
+ 
+         <p:dialog id="NewAlu"
+                   widgetVar="NewAlumno"
+                   appendTo="@(body)"
+                   header="Agregar Detalle De Evaluacion Actitudinal"
+                   closeOnEscape="true"
+                   resizable="false"
+                   responsive=".0"
+                   modal="true"  showEffect="explode" >
+             <h:form>
+                 <h:panelGrid columns="2">          
+                     <p:outputLabel value="Nota"/>
+                     <p:inputText value="#{detEvalActitudController.detalleEv.notaEvalActit}" maxlength="8" placeholder="Nota">
+                         <p:keyFilter regEx='/[\d\-]/'/>
+                     </p:inputText>           
+                      <p:outputLabel value="Evaluación Actitudinal:" />
+                        <p:selectOneMenu value="#{detEvalActitudController.detalleEv.evalActitud_idEvalActit}" >
+                            <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
+                            <f:selectItems value="#{evalActitudController.lstevaluacion}" var="per" itemLabel="#{per.desEvalActit}" itemValue="#{per.idEvalActit}"/>
+                        </p:selectOneMenu> 
+                        
+                          <p:outputLabel value="Centro de Interés:" />
+                          <p:selectOneMenu value="#{detEvalActitudController.detalleEv.CI_idCi}" >
+                            <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
+                            <f:selectItems value="#{ciController.listci}" var="per" itemLabel="#{per.desCi}" itemValue="#{per.idCi}"/>
+                        </p:selectOneMenu> 
+                 
+                     <p:commandButton value="INSERTAR" actionListener="#{detEvalActitudController.add()}" update=":form:data" oncomplete="handleSubmit(args,'NewAlumno');"/>
+                 </h:panelGrid>
+             </h:form>
+         </p:dialog>
+     </ui:composition>
+ 
+ </html>
+ 

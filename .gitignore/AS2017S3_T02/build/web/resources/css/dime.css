@@ -1,0 +1,44 @@
+knob-container ui-corner-all{
+    width: 23px;
+}
+
+#div{ width:50%; height:80%; margin:0 auto;}
+#canvas{border:1px solid #d9d9d9; width: 50%; height: 50%;}
+.contenedor{
+  box-sizing:border-box;
+  float:left;
+  width:50%;
+  padding:10px;
+}
+.lienzo{ 
+  border:1px solid #d9d9d9;  
+}
+#lienzo1{float:right;}
+#lienzo2{width:50%;float:left;}
+
+
+
+.h3, h3 {
+    font-size: 20px;
+}
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+
+.ui-growl {
+    position: fixed;
+    top: 54px;
+    right: 30px;
+    width: 301px;
+}
+
+.main-sidebar {
+    min-height: 150%;
+   
+}
+
+
+

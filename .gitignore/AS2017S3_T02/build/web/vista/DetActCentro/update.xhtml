@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui">
+     <ui:composition>
+         
+         <p:dialog id="Updatedetact"
+                   widgetVar="UpdateDetActividad"
+                   appendTo="@(body)"
+                   header="Modificar DetalleActividad"
+                   closeOnEscape="true"
+                   resizable="false"
+                   responsive=".0"
+                   modal="true"  showEffect="explode" >
+             <h:form>
+                 <h:panelGrid columns="2">
+                     <p:outputLabel value="NOTA"/>
+                     <p:inputText value="#{detActCentroController.detactividad.notaActCent}" placeholder="NOTA"/>
+                     <p:outputLabel value="ACT.CENTRO"/>
+                     <p:inputText value="#{detActCentroController.detactividad.actCentro_idActCent}" placeholder="ACT.CENTRO"/>
+                     <p:commandButton value="Aceptar" actionListener="#{actCentroController.update()}" update=":form:data" oncomplete="handleSubmit(args,'UpdateDetActividad');"/>
+                 </h:panelGrid>
+             </h:form>
+         </p:dialog>
+     </ui:composition>
+ </html>

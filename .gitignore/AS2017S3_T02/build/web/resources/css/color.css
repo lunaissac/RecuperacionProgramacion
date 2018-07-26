@@ -1,0 +1,62 @@
+.ui-widget-header {
+
+    border: 1px solid #a8a8a8;
+
+    background: #c4c4c4 url("/WebGuiaAlters/faces/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png?ln=primefaces-aristo") 50% 50% repeat-x;
+        background-color: rgb(196, 196, 196);
+        background-image: url("/WebGuiaAlters/faces/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png?ln=primefaces-aristo");
+        background-repeat: repeat-x;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-position-x: 50%;
+        background-position-y: 50%;
+        background-size: auto auto;
+    background: #c4c4c4 linear-gradient(top,rgba(255,255,255,0.8),rgba(255,255,255,0));
+
+    background: #c4c4c4 -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0.8)),to(rgba(255,255,255,0)));
+        background-color: rgb(196, 196, 196);
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto auto;
+    background: #3c8dbc -moz-linear-gradient(top,rgb(60, 141, 188),rgba(255,255,255,0));
+        background-color: rgb(60, 141, 188);
+        background-image: -moz-linear-gradient(center top , rgb(60, 141, 188), rgba(255, 255, 255, 0));
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto auto;
+    color: #e6e3e3;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.7);
+
+}
+
+
+.content-wrapper{
+  
+}
+
+
+
+.ui-widget-header {
+ 
+    color: #0089db;
+
+}
+
+
+
+
+
+
+
+

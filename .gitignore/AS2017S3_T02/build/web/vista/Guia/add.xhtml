@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+
+        <p:dialog id="NewGuia"
+                  widgetVar="NewGuia"
+                  appendTo="@(body)"
+                  header="Agregar Nueva Guia"
+                  closeOnEscape="true"
+                  resizable="false"
+                  responsive=".0"
+                  modal="true"  showEffect="explode" >
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="PROMEDIO EVAL.ACTITUDINAL"/>
+                    <p:inputText value="#{guiaController.guia.promEvalActit}" placeholder="PROMEDIO EVAL.ACTIT."/>
+                    <p:outputLabel value="PROMEDIO EVAL.CI"/>
+                    <p:inputText value="#{guiaController.guia.promEvalCi}" placeholder="PROMEDIO EVAL.CI"/>
+                    <p:outputLabel value="RESULTADO FINAL"/>
+                    <p:inputText value="#{guiaController.guia.resultFinGuia}" placeholder="RESULTADO FINAL"/>
+                    <p:outputLabel value="FECHA"/>
+                    <p:inputText value="#{guiaController.guia.fecGuia}" placeholder="FECHA"/>
+                    <p:outputLabel value="CONFORMIDAD DEL TUTOR"/>
+                    <p:inputText value="#{guiaController.guia.confTutor}" placeholder="CONFORMIDAD DEL TUTOR"/>
+                    <p:outputLabel value="CONFORMIDAD DEL ALUMNO"/>
+                    <p:inputText value="#{guiaController.guia.confAlum}" placeholder="CONFORMIDAD DEL ALUMNO"/>
+                    <p:outputLabel value="CI"/>
+                    <p:selectOneMenu value="#{guiaController.guia.CI_idCi}"  >
+                        <f:selectItem itemLabel="SELECCIONE" itemDisabled="true" itemValue="#{null}" />
+                        <f:selectItems value="#{ciController.listci}" var="ci" itemLabel="#{ci.desCi}" itemValue="#{ci.idCi}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="ACT.CI"/>
+                    <p:selectOneMenu value="#{guiaController.guia.detActCentro_idDetActCent}"  >
+                        <f:selectItem itemLabel="SELECCIONE" itemDisabled="true" itemValue="#{null}" />
+                        <f:selectItems value="#{detActCentroController.lstdetactividad}" var="detact" itemLabel="#{detact.notaActCent}" itemValue="#{detact.idDetActCent}"/>
+                    </p:selectOneMenu>
+                    <p:commandButton value="INSERTAR" actionListener="#{guiaController.add()}" update=":form:data" oncomplete="handleSubmit(args,'NewGuia');"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+
+</html>
+

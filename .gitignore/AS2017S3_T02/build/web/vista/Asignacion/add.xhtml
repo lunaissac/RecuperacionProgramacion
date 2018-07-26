@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+
+        <p:dialog id="NewAlu"
+                  widgetVar="NewAlumno"
+                  appendTo="@(body)"
+                  header="Agregar Nuevo Alumno"
+                  closeOnEscape="true"
+                  resizable="false"
+                  responsive=".0"
+                  modal="true"  showEffect="explode" >
+            <h:form>
+                <h:panelGrid columns="2">          
+                            <p:outputLabel value="Fecha Inicio:" />
+                        <p:inputMask  value="#{asignacionController.asignacion.fecInc}" mask="9999/99/99"/>
+                         <p:outputLabel value="Fecha Fin:" />
+                         <p:inputMask  value="#{asignacionController.asignacion.fecFin}" mask="9999/99/99"/>
+                         <p:outputLabel value="Año o temporada" />
+                         <p:inputMask  value="#{asignacionController.asignacion.tempAlt}" mask="9999/99/99"/>
+                        <h:outputLabel for="minMax5" value="Centro de Interés:" />
+                        <p:spinner id="minMax5" maxlength="2" value="#{asignacionController.asignacion.numCi}" min="0" max="20" />
+                       
+                   
+                    <p:commandButton value="INSERTAR" actionListener="#{asignacionController.add()}" update=":form:data" oncomplete="handleSubmit(args,'NewAlumno');"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+
+</html>
+

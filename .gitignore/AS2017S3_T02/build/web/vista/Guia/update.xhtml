@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+
+        <p:dialog id="Updateguia"
+                  widgetVar="UpdateGuia"
+                  appendTo="@(body)"
+                  header="Modificar Guia"
+                  closeOnEscape="true"
+                  resizable="false"
+                  responsive=".0"
+                  modal="true"  showEffect="explode" >
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="PROMEDIO EVAL.ACTITUDINAL"/>
+                    <p:inputText value="#{guiaController.guia.promEvalActit}" placeholder="PROMEDIO EVAL.ACTIT."/>
+                    <p:outputLabel value="PROMEDIO EVAL.CI"/>
+                    <p:inputText value="#{guiaController.guia.promEvalCi}" placeholder="PROMEDIO EVAL.CI"/>
+                    <p:outputLabel value="RESULTADO FINAL"/>
+                    <p:inputText value="#{guiaController.guia.resultFinGuia}" placeholder="RESULTADO FINAL"/>
+                    <p:outputLabel value="FECHA"/>
+                    <p:inputText value="#{guiaController.guia.fecGuia}" placeholder="FECHA"/>
+                    <p:outputLabel value="CONFORMIDAD DEL TUTOR"/>
+                    <p:inputText value="#{guiaController.guia.confTutor}" placeholder="CONFORMIDAD DEL TUTOR"/>
+                    <p:outputLabel value="CONFORMIDAD DEL ALUMNO"/>
+                    <p:inputText value="#{guiaController.guia.confAlum}" placeholder="CONFORMIDAD DEL ALUMNO"/>
+                    <p:outputLabel value="CI"/>
+                    <p:inputText value="#{guiaController.guia.CI_idCi}" placeholder="CI"/>
+                    <p:outputLabel value="ACT.CI"/>
+                    <p:inputText value="#{guiaController.guia.detActCentro_idDetActCent}" placeholder="ACT.CI"/>
+                    <p:commandButton value="Aceptar" actionListener="#{guiaController.update()}" update=":form:data" oncomplete="handleSubmit(args,'UpdateGuia');"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+
+</html>
